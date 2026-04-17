@@ -1,0 +1,125 @@
+@apiHttpBase = http://127.0.0.1:5000
+@apiHttpsBase = https://127.0.0.1:7208
+
+@apiBase = {{apiHttpBase}}
+
+### Users - Get all
+GET {{apiBase}}/api/users
+Accept: application/json
+
+###
+
+### Users - Get by id
+GET {{apiBase}}/api/users/1
+Accept: application/json
+
+###
+
+### Users - Create
+POST {{apiBase}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Pierre",
+  "email": "pierre@example.com",
+  "passwordHash": "hash-de-test",
+  "role": 0
+}
+
+###
+
+### Projects - Get all
+GET {{apiBase}}/api/projects
+Accept: application/json
+
+###
+
+### Projects - Get by id
+GET {{apiBase}}/api/projects/1
+Accept: application/json
+
+###
+
+### Projects - Create
+POST {{apiBase}}/api/projects
+Content-Type: application/json
+
+{
+  "name": "Projet test",
+  "description": "Projet cree depuis TaskFlowAPI.http",
+  "creationDate": "2026-04-17T00:00:00",
+  "user": {
+    "name": "Pierre",
+    "email": "pierre@example.com",
+    "passwordHash": "hash-de-test",
+    "role": 0
+  }
+}
+
+###
+
+### Tasks - Get all
+GET {{apiBase}}/api/tasks
+Accept: application/json
+
+###
+
+### Tasks - Get by id
+GET {{apiBase}}/api/tasks/1
+Accept: application/json
+
+###
+
+### Tasks - Create
+POST {{apiBase}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Premier task",
+  "status": 0,
+  "dueDate": "2026-04-30T00:00:00",
+  "project": {
+    "name": "Projet test",
+    "description": "Projet cree depuis TaskFlowAPI.http",
+    "creationDate": "2026-04-17T00:00:00",
+    "user": {
+      "name": "Pierre",
+      "email": "pierre@example.com",
+      "passwordHash": "hash-de-test",
+      "role": 0
+    }
+  }
+}
+
+###
+
+### Tasks - Update
+PUT {{apiBase}}/api/tasks/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Task mise a jour",
+  "status": 1,
+  "dueDate": "2026-05-05T00:00:00",
+  "project": {
+    "name": "Projet test",
+    "description": "Projet mis a jour depuis TaskFlowAPI.http",
+    "creationDate": "2026-04-17T00:00:00",
+    "user": {
+      "name": "Pierre",
+      "email": "pierre@example.com",
+      "passwordHash": "hash-de-test",
+      "role": 0
+    }
+  }
+}
+
+###
+
+### Tasks - Delete
+DELETE {{apiBase}}/api/tasks/1
+Accept: application/json
+
+###
+
