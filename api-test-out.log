@@ -1,0 +1,11 @@
+Utilisation des paramètres de lancement à partir de TaskFlowAPI\Properties\launchSettings.json...
+info: Program[0]
+      Base de donnees deja presente, schema verifie.
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://127.0.0.1:5057
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\Pierre\Documents\Cours\3-ASPC\Projet-Module\ProjetTaskFlow\TaskFlowAPI

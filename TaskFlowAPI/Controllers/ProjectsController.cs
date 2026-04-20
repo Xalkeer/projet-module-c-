@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DAL;
 using DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace TaskFlowAPI.Controllers;
 
@@ -15,38 +16,59 @@ public class ProjectsController : ControllerBase
         _context = context;
     }
 
-    // GET: api/projects
     [HttpGet]
-    public IActionResult GetProjects()
+    [ProducesResponseType(typeof(IEnumerable<Project>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
     {
-        var projects = _context.Projects.ToList();
+        var projects = await _context.Projects.ToListAsync();
         return Ok(projects);
     }
 
-    // GET: api/projects/{id}
     [HttpGet("{id}")]
-    public IActionResult GetProject(int id)
+    [ProducesResponseType(typeof(Project), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<Project>> GetProject(int id)
     {
-        var project = _context.Projects.Find(id);
+        if (id <= 0)
+        {
+            return BadRequest(new ProblemDetails
+            {
+                Title = "Invalid id",
+                Detail = "The project id must be greater than 0.",
+                Status = StatusCodes.Status400BadRequest
+            });
+        }
+
+        var project = await _context.Projects.FindAsync(id);
         if (project == null)
         {
-            return NotFound();
+            return NotFound(new ProblemDetails
+            {
+                Title = "Project not found",
+                Detail = $"No project exists with id {id}.",
+                Status = StatusCodes.Status404NotFound
+            });
         }
+
         return Ok(project);
     }
 
-    
-    // Post : api/projects/{project}
     [HttpPost]
-    public async Task<ActionResult<DAL.Entities.Project>> CreateProject(DAL.Entities.Project project)
+    [ProducesResponseType(typeof(Project), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
+    public async Task<ActionResult<Project>> CreateProject(Project project)
     {
+        if (!ModelState.IsValid)
+        {
+            return ValidationProblem(ModelState);
+        }
+
         _context.Projects.Add(project);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetProject), new { id = project.Id }, project);
     }
-    
-    
-
 
 }

@@ -1,32 +1,47 @@
-@apiHttpBase = http://127.0.0.1:5000
-@apiHttpsBase = https://127.0.0.1:7208
+@apiHttpBase = http://localhost:5072
+@apiHttpsBase = https://localhost:7208
 
 @apiBase = {{apiHttpBase}}
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4IiwiZW1haWwiOiJwaWVycmUyQGV4YW1wbGUuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IlBpZXJyZSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJqdGkiOiJjMzM4OWExMi1mOGJjLTQxYzktYTI0Mi1hYTcyYTU4MTAyYmYiLCJleHAiOjE3NzY2OTY1ODMsImlzcyI6IlRhc2tGbG93QVBJIiwiYXVkIjoiVGFza0Zsb3dBUEkifQ.LsVYu8y120Kl2pLEvXlLLhqYflW0Og196pXfGXyQJ38
+
+### Users - Register
+POST {{apiBase}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Pierre",
+  "email": "pierre2@example.com",
+  "password": "hash-de-test",
+  "role": 0
+}
+
+###
+
+### Users - Login
+POST {{apiBase}}/api/users/login
+Content-Type: application/json
+
+{
+  "email": "pierre2@example.com",
+  "password": "hash-de-test"
+}
+
+###
 
 ### Users - Get all
 GET {{apiBase}}/api/users
+Authorization: Bearer {{authToken}}
 Accept: application/json
 
 ###
 
 ### Users - Get by id
 GET {{apiBase}}/api/users/1
+Authorization: Bearer {{authToken}}
 Accept: application/json
 
 ###
 
-### Users - Create
-POST {{apiBase}}/api/users
-Content-Type: application/json
-
-{
-  "name": "Pierre",
-  "email": "pierre@example.com",
-  "passwordHash": "hash-de-test",
-  "role": 0
-}
-
-###
 
 ### Projects - Get all
 GET {{apiBase}}/api/projects

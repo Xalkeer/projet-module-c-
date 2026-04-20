@@ -23,11 +23,18 @@ namespace DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseLazyLoadingProxies();
-
             if (!string.IsNullOrWhiteSpace(this._connectionString))
                 optionsBuilder.UseSqlite(this._connectionString);
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasIndex(user => user.Email)
+                .IsUnique();
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
