@@ -45,18 +45,21 @@ Accept: application/json
 
 ### Projects - Get all
 GET {{apiBase}}/api/projects
+Authorization: Bearer {{authToken}}
 Accept: application/json
 
 ###
 
 ### Projects - Get by id
 GET {{apiBase}}/api/projects/1
+Authorization: Bearer {{authToken}}
 Accept: application/json
 
 ###
 
 ### Projects - Create
 POST {{apiBase}}/api/projects
+Authorization: Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -75,18 +78,21 @@ Content-Type: application/json
 
 ### Tasks - Get all
 GET {{apiBase}}/api/tasks
+Authorization: Bearer {{authToken}}
 Accept: application/json
 
 ###
 
 ### Tasks - Get by id
 GET {{apiBase}}/api/tasks/1
+Authorization: Bearer {{authToken}}
 Accept: application/json
 
 ###
 
 ### Tasks - Create
 POST {{apiBase}}/api/tasks
+Authorization: Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -108,33 +114,29 @@ Content-Type: application/json
 
 ###
 
-### Tasks - Update
-PUT {{apiBase}}/api/tasks/1
+### Projects - Update
+PUT {{apiBase}}/api/projects/1
+Authorization: Bearer {{authToken}}
 Content-Type: application/json
 
 {
   "id": 1,
-  "title": "Task mise a jour",
-  "status": 1,
-  "dueDate": "2026-05-05T00:00:00",
-  "project": {
-    "name": "Projet test",
-    "description": "Projet mis a jour depuis TaskFlowAPI.http",
-    "creationDate": "2026-04-17T00:00:00",
-    "user": {
-      "name": "Pierre",
-      "email": "pierre@example.com",
-      "passwordHash": "hash-de-test",
-      "role": 0
-    }
+  "name": "Projet test mis à jour",
+  "description": "Description mise à jour depuis TaskFlowAPI.http",
+  "creationDate": "2026-04-17T00:00:00",
+  "user": {
+    "name": "Pierre",
+    "email": "pierre@example.com",
+    "passwordHash": "hash-de-test",
+    "role": 0
   }
 }
 
 ###
 
-### Tasks - Delete
-DELETE {{apiBase}}/api/tasks/1
+### Projects - Delete
+DELETE {{apiBase}}/api/projects/1
+Authorization: Bearer {{authToken}}
 Accept: application/json
 
 ###
-
