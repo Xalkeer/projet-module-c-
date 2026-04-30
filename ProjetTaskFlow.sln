@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetTaskFlow", "ProjetTaskFlow\ProjetTaskFlow.csproj", "{5145F0D0-A7FE-4661-AC38-8A550BACD8F5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{730BE0BE-712D-4CFD-BC4D-E66F26EBB802}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFlowAPI", "TaskFlowAPI\TaskFlowAPI.csproj", "{90EAC26E-0F17-494C-AB82-5D23F767CF9D}"
@@ -12,10 +10,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5145F0D0-A7FE-4661-AC38-8A550BACD8F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5145F0D0-A7FE-4661-AC38-8A550BACD8F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5145F0D0-A7FE-4661-AC38-8A550BACD8F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5145F0D0-A7FE-4661-AC38-8A550BACD8F5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{730BE0BE-712D-4CFD-BC4D-E66F26EBB802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{730BE0BE-712D-4CFD-BC4D-E66F26EBB802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{730BE0BE-712D-4CFD-BC4D-E66F26EBB802}.Release|Any CPU.ActiveCfg = Release|Any CPU

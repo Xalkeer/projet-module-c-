@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DAL;
 using DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace TaskFlowAPI.Controllers;
@@ -17,6 +18,7 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     [ProducesResponseType(typeof(IEnumerable<Project>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
     {
@@ -25,6 +27,7 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [Authorize]
     [ProducesResponseType(typeof(Project), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
@@ -55,6 +58,7 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     [ProducesResponseType(typeof(Project), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
